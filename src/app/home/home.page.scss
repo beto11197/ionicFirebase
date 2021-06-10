@@ -1,11 +1,5 @@
 #container {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 #container strong {
@@ -24,4 +18,17 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-col {
+  border: 1px solid grey;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnguardar{
+ margin-top: 20px; 
+ margin-bottom: 30px;
 }

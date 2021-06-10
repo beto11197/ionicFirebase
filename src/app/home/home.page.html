@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      CRUD
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,74 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" class="ion-padding">
+    <div padding *ngIf="show">
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="user.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="user.apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Edad</ion-label>
+        <ion-input type="text" [(ngModel)]="user.edad"></ion-input>
+      </ion-item>
+      <ion-button expand="block" class="btnguardar" (click)="saveUser()">Guardar</ion-button>
+      <ion-button *ngIf="idSelected != 0" expand="block" class="btnguardar" (click)="removeSelectedUser()"
+        color="danger">Borrar</ion-button>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Tabla de usuarios
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          Nombre
+        </ion-col>
+        <ion-col>
+          Apellido
+        </ion-col>
+        <ion-col>
+          Edad
+        </ion-col>
+        <ion-col>
+          Acciones
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let user of users">
+        <ion-col>
+          {{ user.nombre }}
+        </ion-col>
+        <ion-col>
+          {{ user.apellido }}
+        </ion-col>
+        <ion-col>
+          {{ user.edad }}
+        </ion-col>
+        <ion-col>
+          <ion-button size="small" (click)="selectUser(user.id)" color="warning">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button size="small" (click)="removeUserID(user.id)" color="danger">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
   </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showform()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
